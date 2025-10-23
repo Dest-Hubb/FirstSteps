@@ -1,0 +1,66 @@
+body {
+  font-family: "Cooper Black";
+}
+
+#player {
+  grid-column: 2/3;
+  font-size: 60px;
+}
+.container {
+  display: grid;
+  grid-template-columns: 150px auto 150px;
+  grid-template-rows: 200px auto 200px;
+  justify-items: center;
+}
+.background {
+  grid-row: 2/3;
+  grid-column: 1/4;
+  background-color: red;
+  width: 100vw;
+}
+.choice-menu {
+  width: 500px;
+  padding: 20px;
+  border: 2px solid #3d073d;
+  border-radius: 10px;
+  grid-row: 2/3;
+  grid-column: 2/3;
+  text-align: center;
+  background-color: green;
+}
+
+.select {
+  font-size: 60px;
+}
+
+.choices {
+  width: 250px;
+  height: 100px;
+  background-color: #9d349d;
+}
+
+button {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.board {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+}
+
+.cell {
+  user-select: none;
+  border: 1px solid green;
+  cursor: pointer;
+  justify-items: center;
+}
+
+.cell p {
+  margin: 0 auto;
+  font-size: 80px;
+}
