@@ -14,6 +14,29 @@ function isEmpty(x) {
   return x.textContent === "";
 }
 
+function checkWinner(x) {
+  let possibles = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  for (let [a, b, c] of possibles) {
+    if (
+      x[a].textContent != "" &&
+      x[a].textContent === x[b].textContent &&
+      x[b].textContent === x[c].textContent
+    )
+      return true;
+  }
+  return false;
+}
+
 for (let i = 0; i < cell.length; i++) {
   cell[i].addEventListener("click", function () {
     let p = document.createElement("p");
@@ -24,12 +47,12 @@ for (let i = 0; i < cell.length; i++) {
         cell[i].appendChild(p);
         count++;
         // console.log(player.textContent);
-        if (!checkWinner()) {
+        if (!checkWinner(cell)) {
           player.textContent = "Player 2's Turn";
           // console.log(count);
           turn = 2;
         } else {
-          player.textContent = "Player 2 Wins!!!";
+          player.textContent = "Player 1 Wins!!!";
           turn = 0;
         }
       } else if (turn == 2) {
@@ -37,12 +60,12 @@ for (let i = 0; i < cell.length; i++) {
         p.textContent = "O";
         cell[i].appendChild(p);
         count++;
-        if (!checkWinner()) {
+        if (!checkWinner(cell)) {
           player.textContent = "Player 1's Turn";
           // console.log(count);
           turn = 1;
         } else {
-          player.textContent = "Player 1 Wins!!!";
+          player.textContent = "Player 2 Wins!!!";
           turn = 0;
         }
       }
@@ -55,19 +78,6 @@ for (let i = 0; i < cell.length; i++) {
     //end the game
   });
 }
-
-// function checkWinner() {
-//   for (let i = 0; i < cell.length; i++) {
-//     return cell[0] === cell[1] && cell[1] === cell[2];
-//     return cell[3] === cell[4] && cell[4] === cell[5];
-//     return cell[6] === cell[7] && cell[7] === cell[8];
-//     return cell[0] === cell[3] && cell[3] === cell[6];
-//     return cell[1] === cell[4] && cell[4] === cell[7];
-//     return cell[2] === cell[5] && cell[5] === cell[8];
-//     return cell[0] === cell[4] && cell[4] === cell[8];
-//     return cell[2] === cell[4] && cell[4] === cell[6];
-//   }
-// }
 
 for (let i = 0; i < cell.length; i++) {
   cell[i].addEventListener("mousedown", function () {
@@ -88,52 +98,3 @@ for (let i = 0; i < cell.length; i++) {
     }
   });
 }
-
-/* leetcode (ignore)
-let s = "IceCream";
-
-console.log(s);
-var reverseVowels = function (s) {
-  let arr = [];
-  let j = 0;
-  for (let i = 0; i < s.length; i++) {
-    if (
-      s[i] == "a" ||
-      "e" ||
-      "i" ||
-      "o" ||
-      "u" ||
-      "A" ||
-      "E" ||
-      "I" ||
-      "O" ||
-      "U"
-    ) {
-      arr[j] = s[i];
-      j++;
-    }
-  }
-  for (let i = s.length - 1; (i = 0); i--) {
-    if (
-      s[i] == "a" ||
-      "e" ||
-      "i" ||
-      "o" ||
-      "u" ||
-      "A" ||
-      "E" ||
-      "I" ||
-      "O" ||
-      "U"
-    ) {
-      s[i] = arr[j];
-      j++;
-    }
-  }
-  return s;
-};
-
-reverseVowels();
-console.log(s);
-
-*/
